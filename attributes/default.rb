@@ -3,6 +3,7 @@
 # Attributes:: default
 #
 # Author:: Jamie Winsor (<jamie@vialstudios.com>)
+#          Christoph Jahn (<chris@jahntech.com>
 #
 # Copyright 2012, Riot Games
 #
@@ -19,7 +20,7 @@
 # limitations under the License.
 #
 
-default[:liquibase][:version]      = "3.1.1"
-default[:liquibase][:url]          = "http://softlayer-dal.dl.sourceforge.net/project/liquibase/Liquibase%20Core/liquibase-#{node[:liquibase][:version]}-bin.tar.gz"
-default[:liquibase][:checksum]     = "91c237126ad37703e8e04bb49235044c"
-default[:liquibase][:install_path] = "/opt/liquibase-#{node[:liquibase][:version]}"
+default['liquibase']['version']      = "3.5.3"
+default['liquibase']['url']          = "https://github.com/liquibase/liquibase/releases/download/liquibase-parent-#{node['liquibase']['version']}/liquibase-#{node['liquibase']['version']}-bin.tar.gz"
+default['liquibase']['checksum']     = "fb85d27f1ef8aef0539a74eca3b71692292f2e961171701a38ba82cdbcb39711"
+default['liquibase']['install_path'] = "/opt/liquibase-#{node['liquibase']['version']}"

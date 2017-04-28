@@ -23,9 +23,9 @@ include_recipe "java"
 
 src_filepath = "#{Chef::Config[:file_cache_path]}/#{::File.basename(node[:liquibase][:url])}"
 
-remote_file node[:liquibase][:url] do
-  source node[:liquibase][:url]
-  checksum node[:liquibase][:checksum]
+remote_file node['liquibase']['url'] do
+  source node['liquibase']['url']
+  checksum node['liquibase']['checksum']
   path src_filepath
   backup false
   notifies :run, "bash[extract_liquibase]"
@@ -34,9 +34,9 @@ end
 bash "extract_liquibase" do
   cwd ::File.dirname(src_filepath)
   code <<-EOH
-    mkdir -p #{node[:liquibase][:install_path]}
-    tar zxf #{src_filepath} -C #{node[:liquibase][:install_path]}
+    mkdir -p #{node['liquibase']['install_path']}
+    tar zxf #{src_filepath} -C #{node['liquibase']['install_path']}
   EOH
 
-  not_if { File.exists?("#{node[:liquibase][:install_path]}/liquibase.jar") }
+  not_if { File.exists?("#{node['liquibase']['install_path'}/liquibase.jar") }
 end
